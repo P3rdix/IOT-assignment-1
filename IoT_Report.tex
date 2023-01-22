@@ -1,25 +1,59 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\graphicspath{ {./images/} }
+\usepackage{multicol}
+
+
 \userpackage[a4paper, total={7in, 10in}]{geometry}
 
 \title{Review of Intelligent Traffic Signal Control System Using Embedded Systems}
 \author{Vedant Nair}
-\date{\tody}
+\date{\today}
 
 \begin{document}
-	\input{title}
-	\begin{center}
-		\section*{Title}
-	\end{center}
-\setlength{\columnsep}{1.0cm}
-	\section*{Overview}
+%----------------------------------------------------------------------------------------
+
+\section{Overview}
+
+\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
+
+
 	In the paper, "Review of Intelligent Traffic Signal Control System Using Embedded Systems", the authors, Dinesh Rotake et al[1] propose a new system for controlling traffic signals to improve upon traffic wait times and reduce unnecessary times spent by emergency response vehicles at stops. They suggest the replacement of AT89C51 systems, which have low internal memory and no in-built Analog to digital conversion methods with an Intelligent Traffic Signal Control(ITSC), which  consists of an AVR_32 microcontroller possessing a 32kb in-system programmable flash memory as well as in-built ADC which meet the requirements for processing IR input from a sensor network. The ITSC deals wih two problems: 1) The detection of traffic volumes using genetic algorithms and 2) The detection of emergency vehicles using IR sensor networks at the signal intersection.
-	\begin{multicols}{1}
-	\section*{Key Contributions}
+
+%------------------------------------------------
+
+\section*{Key Contributions}
 	The authors propose the following ideas in their paper:
-	\begin{enumerate}
-		\item They state that traffic signals give rise to two problems, first that the wait time when a sublane is empty is unnecessary, and second that emergency repsonse vehicles are caused to wait for unnecessarily long times.
-		\items They make use of genetic algorithms as proposed by Author Manoj Kanta Mainali et al.[2] to estimate traffic times using only previous timings, and attempt to handle emergency vehicles by giving a green light in the required lane upon detection. In the case of two vehicles being detected, the author proposes that all lanes be closed and only the vehicles in the direct line of the emergency vehicle be allowed to move.
-		\items The proposed idea makes use of an AVR_32 microcontroller and an IR network, which pairs with a series of IR transmitters inside the emergency vehicles themselves. 
-		\items An experiment was conducted based on such a system, where the IR sensors are used to detect the emergence of the vehicle and open a divider gate to allow the vehicle to pass. The divider gates are also controlled by the controller itself, which uses the IR sensors to judge the approximate number of vehicles passing in unit time and use the genetic algorithm to judge the amount of time required for the next time the gate opens.
-	\end{enumerate}
-	\section*{My Views on The Paper}
-	In my opinion, the paper, which while well proposed, has three major pitfalls. First, is that it proposes no viable solutions to emergency vehicles
+\begin{enumerate}
+	\item They state that traffic signals give rise to two problems, first that the wait time when a sublane is empty is unnecessary, and second that emergency repsonse vehicles are caused to wait for unnecessarily long times.
+	\items They make use of genetic algorithms as proposed by Author Manoj Kanta Mainali et al.[2] to estimate traffic times using only previous timings, and attempt to handle emergency vehicles by giving a green light in the required lane upon detection. In the case of two vehicles being detected, the author proposes that all lanes be closed and only the vehicles in the direct line of the emergency vehicle be allowed to move.
+	\items The proposed idea makes use of an AVR_32 microcontroller and an IR network, which pairs with a series of IR transmitters inside the emergency vehicles themselves. 
+	\items An experiment was conducted based on such a system, where the IR sensors are used to detect the emergence of the vehicle and open a divider gate to allow the vehicle to pass. The divider gates are also controlled by the controller itself, which uses the IR sensors to judge the approximate number of vehicles passing in unit time and use the genetic algorithm to judge the amount of time required for the next time the gate opens.
+\end{enumerate}
+
+%------------------------------------------------
+
+\section*{Agreements, Pitfalls and Fallacies}
+	In my opinion, the paper, has three major pitfalls. First, is it's solution to the problem of a single approaching emergency vehicle. When a vehicle approaches, the author proposes that the vehicle's lane be permanently green until it has passed. This solution is not guaranteed to work in high traffic situations, where the systems IR sensors may not detect the vehicle, and where it is most important for the vehicle to be detected.It may also give rise to high traffic conditions in the connected lanes, which are the cause of the prior problem. 
+	Furthermore, the paper makes the argument of cost being a major factor due to which it is better than other papers doing the same. However, the paper fails to take into account the cost of fitting every emergency vehicle with an IR transmitter that is described, nor does it look at the cost of maintaining an IR sensor embedded in a road.
+	Secondly, the papers solution to multiple vehicles is flawed. It states that when two or more emergency vehicles are converging on a single intersection, all lights are to go red and only the individual lanes of the vehicles may move. Not only is such a method extremely risky, it is also highly inefficient. It relies on human interpretation of a situation, which can be as varied as the number of leaves on a tree, and also expects them to move in ways they are expressly told not to.
+	Finally, there is the matter of the genetic algorithm. In the paper, it is stated that the genetic algorithm used to manipulate the signal timings makes use of inputs based on the flow of traffic (measured in number of cars passing a set of sensors in one signal change), number of cars remaining after the signal change, and the past flow and density. However, a method of sensing this is not mentioned.
+	
+\section{Conclusion}
+	In the end, I believe that this paper, while having a sound idea in the working of a dynamically controlled traffic signal system, requires a better implementation. It requires further though on the solutions to emergency vehicle handling, and vehicle data collection. It provides some ingenious ideas in the usage of genetic algorithms to predict traffic data, as evidenced by the graphs referred in their findingg, and is an interesting paper to read.
+
+%------------------------------------------------
+
+\phantomsection
+\section*{References} % The \section*{} command stops section numbering
+
+\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
+
+[1] Dinesh Rotake, Prof. Swapnili Karmore (2012) "Intelligent Traffic Signal Control System Using Embedded Systems", ISSN 2222-1727
+[2] Manoj Kanta Mainali & Shingo Mabu (2010) “Evolutionary Approach for the Traffic Volume
+Estimation of Road Sections”, pp100- 105, IEEE.
+
+
+
+\end{document}
