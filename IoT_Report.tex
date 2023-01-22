@@ -1,0 +1,25 @@
+\userpackage[a4paper, total={7in, 10in}]{geometry}
+
+\title{Review of Intelligent Traffic Signal Control System Using Embedded Systems}
+\author{Vedant Nair}
+\date{\tody}
+
+\begin{document}
+	\input{title}
+	\begin{center}
+		\section*{Title}
+	\end{center}
+\setlength{\columnsep}{1.0cm}
+	\section*{Overview}
+	In the paper, "Review of Intelligent Traffic Signal Control System Using Embedded Systems", the authors, Dinesh Rotake et al[1] propose a new system for controlling traffic signals to improve upon traffic wait times and reduce unnecessary times spent by emergency response vehicles at stops. They suggest the replacement of AT89C51 systems, which have low internal memory and no in-built Analog to digital conversion methods with an Intelligent Traffic Signal Control(ITSC), which  consists of an AVR_32 microcontroller possessing a 32kb in-system programmable flash memory as well as in-built ADC which meet the requirements for processing IR input from a sensor network. The ITSC deals wih two problems: 1) The detection of traffic volumes using genetic algorithms and 2) The detection of emergency vehicles using IR sensor networks at the signal intersection.
+	\begin{multicols}{1}
+	\section*{Key Contributions}
+	The authors propose the following ideas in their paper:
+	\begin{enumerate}
+		\item They state that traffic signals give rise to two problems, first that the wait time when a sublane is empty is unnecessary, and second that emergency repsonse vehicles are caused to wait for unnecessarily long times.
+		\items They make use of genetic algorithms as proposed by Author Manoj Kanta Mainali et al.[2] to estimate traffic times using only previous timings, and attempt to handle emergency vehicles by giving a green light in the required lane upon detection. In the case of two vehicles being detected, the author proposes that all lanes be closed and only the vehicles in the direct line of the emergency vehicle be allowed to move.
+		\items The proposed idea makes use of an AVR_32 microcontroller and an IR network, which pairs with a series of IR transmitters inside the emergency vehicles themselves. 
+		\items An experiment was conducted based on such a system, where the IR sensors are used to detect the emergence of the vehicle and open a divider gate to allow the vehicle to pass. The divider gates are also controlled by the controller itself, which uses the IR sensors to judge the approximate number of vehicles passing in unit time and use the genetic algorithm to judge the amount of time required for the next time the gate opens.
+	\end{enumerate}
+	\section*{My Views on The Paper}
+	In my opinion, the paper, which while well proposed, has three major pitfalls. First, is that it proposes no viable solutions to emergency vehicles
